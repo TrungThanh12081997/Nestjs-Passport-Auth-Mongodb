@@ -1,14 +1,14 @@
-import { Module, Logger } from '@nestjs/common';
-import { ExemplaeController } from './example/example.controller';
+import { Module, Logger, forwardRef } from '@nestjs/common';
+import { ExampleController } from './example/example.controller';
 import { ExampleService } from './example/example.service';
 import { ExampleModule } from './example/example.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
+import { AuthModule } from '../../../libs/common/src /modules/auth/auth.module';
 
 @Module({
   imports: [
-    ExampleModule,
     ConfigModule.forRoot({
       isGlobal: true, // Makes the ConfigModule available throughout the application
       envFilePath: 'apps/alpha/.env', // Specify the path to your .env file
@@ -31,8 +31,10 @@ import mongoose from 'mongoose';
       },
       inject: [ConfigService],
     }),
+    forwardRef(() => ExampleModule),
+    AuthModule,
   ],
-  controllers: [ExemplaeController],
-  providers: [ExampleService],
+  // controllers: [],
+  // providers: [],
 })
 export class AppModule {}

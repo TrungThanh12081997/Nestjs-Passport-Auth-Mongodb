@@ -3,8 +3,8 @@ import { Transform } from 'class-transformer';
 import { IsBoolean, IsInt, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class getCircleQuery {
+  @ApiPropertyOptional()
   @IsOptional()
-  @IsNumber()
   organisationId: number;
 
   @IsBoolean()

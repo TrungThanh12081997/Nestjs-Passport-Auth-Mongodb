@@ -1,17 +1,5 @@
-import {
-  BadRequestException,
-  CanActivate,
-  ExecutionContext,
-  Inject,
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
-  Scope,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable, Scope } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { assignIn, includes } from 'lodash';
-
-import { AccessService } from '../access.service';
 import { ACCESS_TYPES, CIRCLE_CONTENT_TYPES, ORGANISATION_CONTENT_TYPES } from '../access.const';
 
 type OrganisationTypeOfContent = (typeof ORGANISATION_CONTENT_TYPES)[number];

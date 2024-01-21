@@ -10,38 +10,28 @@ import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('example')
 @Controller('example')
-export class ExemplaeController {
-  constructor(
-    private readonly exampleService: ExampleService,
-    // private readonly timelineService: TimelineService,
-  ) {}
+export class ExampleController {
+  constructor(private readonly exampleService: ExampleService) {}
 
   @HttpCode(200)
   @Post('create/:id/:targetUserId')
   @IsPublic()
   @CheckAccess('roomRules', 'update_roles')
-  async createCircle(
-    @User() user: any,
-    @Param('id') circleId: string,
-    // @Param('targetUserId') targetUserId: string,
-    @Body() body: CreateCircleDto,
-  ) {
+  async createCircle(@User() user: any, @Param('id') circleId: string, @Body() body: CreateCircleDto) {
     return this.exampleService.createCircle({ ...body, user, circleId });
   }
 
   @Put('update/:id/:targetUserId')
-  // @CheckAccess('roomRules', 'update_roles')
   async updateStaff(
-    // @User() user: UserEntity,
     @Param('id') circleId: string,
     @Param('targetUserId') targetUserId: string,
-    @Body() body: CreateCircleDto, // create a dto for update
+    @Body() body: CreateCircleDto,
   ) {
     return this.exampleService.updateCircle({ ...body, circleId, targetUserId });
   }
 
   @Get('/:id')
-  //   @CheckAccess('roomOrganisations', 'read')
+  @IsPublic()
   async getCircleById(
     // @User() user: UserEntity, TODO: Thanh, get @User
     @Query() query: getCircleQuery,
@@ -55,11 +45,7 @@ export class ExemplaeController {
   }
 
   @Delete('delete/:id')
-  // @CheckAccess('roomRules', 'remove')
-  async deleteStaff(
-    // @User() user: UserEntity,
-    @Param('id') circleId: string,
-  ) {
+  async deleteStaff(@Param('id') circleId: string) {
     return this.exampleService.deleteCircle({ circleId });
   }
 }
