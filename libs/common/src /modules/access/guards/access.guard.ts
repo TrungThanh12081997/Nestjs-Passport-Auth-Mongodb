@@ -14,16 +14,10 @@ type TypeOfAccess = (typeof ACCESS_TYPES)[number];
  */
 @Injectable({ scope: Scope.REQUEST })
 export class AccessGuard implements CanActivate {
-  constructor(
-    // @Inject(AccessService) private accessService: AccessService,
-    private readonly reflector: Reflector,
-  ) {}
+  constructor(private readonly reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    // throw new BadRequestException('dont access');
-    // const request = context.switchToHttp().getRequest();
     const typeOfContent = this.reflector.get('typeOfContent', context.getHandler());
-    // take metaDate here and query database of user;
     if (typeOfContent) return true;
     return false;
   }

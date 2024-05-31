@@ -1,19 +1,9 @@
-// import { RefreshAuthDto } from '@app/common/modules/auth/dto/refresh-auth.dto';
-// import { JwtPayload } from '@app/common/modules/auth/interface/jwt-payload.interface';
-// import { generateAuthCookie, hashLoginToken, validatePassword } from '@app/common/modules/auth/utils/auth.util';
-// import { UserEntity } from '@app/common/modules/user/schemas/user.schema';
-// import { UserService } from '@app/common/modules/user/user.service';
-// import { extractHostname } from '@app/common/utils/extractHostname.util';
-// import { transformToRawJson } from '@app/common/utils/transformToRawJson.util';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { assign, toLower } from 'lodash';
+import { toLower } from 'lodash';
 import { UserEntity } from '../user/schemas/user.schema';
 import { UserService } from '../user/user.service';
-import { validatePassword } from './utils/auth.util';
-
-// import { FileService } from '../file/file.service';
 
 @Injectable()
 export class AuthService {

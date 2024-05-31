@@ -4,6 +4,8 @@ import { ExampleService } from './example.service';
 import { AccessGuard } from '../../../../libs/common/src /modules/access/guards/access.guard';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Example, ExampleSchema } from './schemas/example.schema';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from '../../../../libs/common/src /modules/auth/guards/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -21,7 +23,11 @@ import { Example, ExampleSchema } from './schemas/example.schema';
   providers: [
     ExampleService,
     {
-      provide: 'APP_GUARD',
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+    {
+      provide: APP_GUARD,
       useClass: AccessGuard,
     },
   ],

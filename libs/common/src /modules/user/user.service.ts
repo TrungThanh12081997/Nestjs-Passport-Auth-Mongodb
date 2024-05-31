@@ -2,7 +2,6 @@ import { Inject, Injectable, Logger, NotFoundException, Scope, forwardRef } from
 import { BaseService } from '../../services/base.service';
 import { UserDocument, UserEntity } from './schemas/user.schema';
 import { InjectModel } from '@nestjs/mongoose';
-import { ConfigService } from '@nestjs/config';
 import { REQUEST } from '@nestjs/core';
 import { Model } from 'mongoose';
 

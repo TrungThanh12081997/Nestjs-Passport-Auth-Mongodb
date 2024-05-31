@@ -19,7 +19,7 @@ import { AuthModule } from '../../../libs/common/src /modules/auth/auth.module';
       useFactory: async (configService: ConfigService) => {
         const logger = new Logger('MongoDB');
         // const uri = configService.get<string>('MONGO_URI');
-        const uri = `mongodb+srv://quantrungthanh:quantrungthanh@twitter.epvh5co.mongodb.net/?retryWrites=true&w=majority`;
+        const uri = `mongodb+srv://admin:zd2Nfc2UcOkp9ftv@cluster0.gaaqrz0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
         try {
           await mongoose.connect(uri);

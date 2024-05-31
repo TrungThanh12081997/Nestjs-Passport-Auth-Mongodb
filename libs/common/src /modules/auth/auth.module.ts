@@ -1,13 +1,3 @@
-// import { CreditModule } from '@app/alpha/credit/credit.module';
-// import { MailerModule } from '@app/alpha/mailer/mailer.module';
-// import { OrganisationModule } from '@app/alpha/organisation/organisation.module';
-// import { AuthController } from '@app/common/modules/auth/auth.controller';
-// import { AuthService } from '@app/common/modules/auth/auth.service';
-// import { JwtStrategy } from '@app/common/modules/auth/passport/jwt.strategy';
-// import { LocalStrategy } from '@app/common/modules/auth/passport/local.strategy';
-// import { AuthProfile } from '@app/common/modules/auth/profile/auth.profile';
-// import { UserModule } from '@app/common/modules/user/user.module';
-// import { UserService } from '@app/common/modules/user/user.service';
 import { forwardRef, Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
